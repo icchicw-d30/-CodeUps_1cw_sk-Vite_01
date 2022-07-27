@@ -1,4 +1,4 @@
-# CodeUps_1cw_sk-Vite-simplified
+# CodeUps_1cw_sk-Vite-01
 - これは静的サイト用Vite環境です
 - 開発環境で起動する場合、ファイルは出力されません（ゆえに速度が速い）
 - vite.config.jsのportで任意のポート番号を指定できます
