@@ -38,6 +38,11 @@ body {
   line-height: 1.5;
 }
 
+/* swiper button消失対策 */
+.swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after, .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+  text-rendering: auto;
+}
+
 /* Remove list styles on ul, ol elements with a class attribute */
 ul,
 ol {
