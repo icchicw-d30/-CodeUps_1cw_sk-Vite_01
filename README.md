@@ -1,5 +1,7 @@
 # CodeUps_1cw_sk-Vite_01
 - これは静的サイト用Vite環境です
+- srcフォルダ内のpublicフォルダ(images, js)、htmlファイル、scssフォルダのみ扱うことを基本とします
+    - カスタマイズ・改変は自己責任でお願いします。エラーが起こった場合、こちらでは対応いたしかねます
 - 開発環境で起動する場合、ファイルは出力されません（ゆえに速度が速い）
 - vite.config.jsのportで任意のポート番号を指定できます
     - 必要ない場合は削除してください
@@ -35,7 +37,7 @@
 - main.jsの名称を変更した際は、必ずvita.config.jsで設定を変更してください
 - publicフォルダ内のJSについて
     - type属性を書かずに通常の方法で記述してください
-    - publicフォルダ内のJSを読み込む際は`<script src="./assets/js/hige.js"></script>`のようにpublicは省略する
+    - publicフォルダ内のJSを読み込む際は`<script src="./assets/js/script.js"></script>`のようにpublicは省略する
 
 # 一部スタイルが当たらない問題について
 - swiperに対してscssで指定してもスタイルが反映しない
@@ -49,7 +51,8 @@
     - index.htmiからcomponentsフォルダ内のファイルをincludeすることは可能 
 
 # 画像圧縮
-- viteImageminで実行させてます
+- vite-plugin-imageminで実行させてます
+- 不要な場合はvite.config.jsの「viteImagemin」の記述部分とプラグインvite-plugin-imageminを削除してください
 
 # 変数の記述方法
 - 基本的にhandlebarsの記述方法で行うこと 例：`{{hoge}}`
