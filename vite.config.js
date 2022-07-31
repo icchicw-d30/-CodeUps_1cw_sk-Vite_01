@@ -5,6 +5,29 @@ import sassGlobImports from 'vite-plugin-sass-glob-import';
 import handlebars from 'vite-plugin-handlebars';
 import ejs from 'vite-plugin-ejs-engine';
 
+// HTMLの複数出力を自動化する
+//./src配下のファイル一式を取得
+const fs = require('fs');
+const fileNameList = fs.readdirSync(resolve(__dirname, './src/'));
+
+//htmlファイルのみ抽出
+const htmlFileList = fileNameList.filter(file => /.html$/.test(file));
+
+//build.rollupOptions.inputに渡すオブジェクトを生成
+const inputFiles = {};
+for (let i = 0; i < htmlFileList.length; i++) {
+  const file = htmlFileList[i];
+  inputFiles[file.slice(0,-5)] = resolve(__dirname, './src/' + file );
+  /*
+    この形を自動的に作る
+    input:{
+      index: resolve(__dirname, './src/index.html'),
+      list: resolve(__dirname, './src/list.html')
+    }
+  */
+}
+
+
 //HTML上で出し分けたい各ページごとの情報
 const pageData = {
   '/index.html': {
@@ -61,14 +84,8 @@ export default defineConfig({
         chunkFileNames: 'assets/js/[name].js',
         entryFileNames: 'assets/js/[name].js',
       },
-      input: {
-        index: resolve(__dirname, './src/index.html'),
-        /*
-        複数HTMLページを出力したい時にここへ追記していく
-        xxx: resolve(__dirname, './src/xxx.html'),
-        */
-        hoge: resolve(__dirname, './src/hoge.html'),
-      },
+      //生成オブジェクトを渡す
+      input: inputFiles,
 
     },
   },
