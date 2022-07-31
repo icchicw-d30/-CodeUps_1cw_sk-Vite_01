@@ -39,12 +39,13 @@
     - type属性を書かずに通常の方法で記述してください
     - publicフォルダ内のJSを読み込む際は`<script src="./assets/js/script.js"></script>`のようにpublicは省略する
 
-# 一部スタイルが当たらない問題について
+# ライブラリにスタイルが当たらない問題について
 - swiperに対してscssで指定してもスタイルが反映しない
     - jsでスタイルを当てると、scssが有効になる（バグ？）
     - 例：`$('.swiper-pagination-progressbar .swiper-pagination-progressbar-fill').css('background', 'red');`
     - slick, splide等では未検証
     - ①postcss.config.jsのsafelistにクラス名を入れる、②他のCSSを先に読み込み、style.scssを最後に読み込む で対応可能
+    - 他に関しても同様のことが起こった場合は上記を実行してみてください
 
 # includeについて
 - componentsフォルダ内のファイルから他のファイルをinclude出来ない
